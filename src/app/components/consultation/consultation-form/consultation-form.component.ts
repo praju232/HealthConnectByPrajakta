@@ -32,7 +32,7 @@ export class ConsultationFormComponent implements OnInit {
       currentIllness: ['', Validators.required],
       recentSurgery: [''],
       surgeryTimespan: [''],
-
+      dateTime:[new Date()],
       // Step 2
       isDiabetic: [false],
       allergies: [''],

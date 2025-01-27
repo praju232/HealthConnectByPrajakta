@@ -26,7 +26,7 @@ const appointmentSchema = new mongoose.Schema({
   },
   reason: {
     type: String,
-    required: true
+    required: false
   },
   notes: String,
   createdAt: {

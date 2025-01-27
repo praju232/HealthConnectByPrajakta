@@ -32,8 +32,10 @@ export class AppComponent {
         // Hide topbar on login/signup pages
         const currentPath = event.urlAfterRedirects;
         if (currentPath.includes('/patient/login') || currentPath.includes('/patient/signup') || 
-            currentPath.includes('/doctor/login') || currentPath.includes('') || currentPath.includes('/doctor/signup')) {
+            currentPath.includes('/doctor/login') || currentPath.includes('/doctor/signup') 
+          ||  currentPath == '/') {
           this.showTopbar = false;
+
         } else {
           this.showTopbar = true;
         }

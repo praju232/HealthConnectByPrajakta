@@ -8,6 +8,7 @@ const path = require('path');
 const fs = require('fs');
 const auth = require('../middleware/auth');
 const Consultation = require('../models/consultation');
+const Appointment = require('../models/appointment');
 
 
 // Ensure uploads/doctors directory exists
@@ -43,7 +44,7 @@ const upload = multer({
 // Doctor signup
 router.post('/signup', upload.single('profilePicture'), async (req, res) => {
     try {
-        const { name, specialty, email, phoneNumber, yearsOfExperience, consultationFee, password } = req.body;
+        const { name, specialty, email, phoneNumber, yearsOfExperience, consultationFee, password ,upiId} = req.body;
         
         // Check if email or phone already exists
         const existingDoctor = await Doctor.findOne({ $or: [{ email }, { phoneNumber }] });
@@ -63,6 +64,7 @@ router.post('/signup', upload.single('profilePicture'), async (req, res) => {
             yearsOfExperience: Number(yearsOfExperience),
             consultationFee: Number(consultationFee),
             password: hashedPassword,
+            upiId,
             profilePicture: req.file ? '/uploads/doctors/' + path.basename(req.file.path) : '/uploads/doctors/default-doctor.png'
         });
 
@@ -145,15 +147,15 @@ router.get('/stats', auth, async (req, res) => {
     }
 
     // Get total appointments
-    const totalAppointments = await Consultation.countDocuments({ doctorId });
+    const totalAppointments = await Appointment.countDocuments({ doctorId });
 
     // Get unique patients count
 const totalPatients = await Consultation.distinct('patientId');
 const totalPatientsCount = totalPatients.length;
     // Calculate total earnings (you may need to adjust this based on your schema)
-    const consultations = await Consultation.find({ doctorId });
-    const totalEarnings = consultations.reduce((sum, consultation) => sum + (consultation.fee || 0), 0);
-
+    const consultations = await Doctor.findById(req.user.id)
+    console.log(consultations,"consultations");
+const totalEarnings = totalAppointments*consultations.consultationFee
     res.json({
       totalPatientsCount,
       totalAppointments,
@@ -174,7 +176,7 @@ router.get('/appointments', auth, async (req, res) => {
             return res.status(400).json({ message: 'Doctor ID is required' });
         }
 
-        const consultations = await Consultation.find({ doctorId })
+        const consultations = await Appointment.find({ doctorId })
             .populate('patientId')
             .sort({ createdAt: -1 });
 

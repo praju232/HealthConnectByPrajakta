@@ -49,7 +49,9 @@ const consultationSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
-    }
+    },
+    reason: { type: String, required: true },
+    dateTime: { type: Date, required: true },
 });
 
 module.exports = mongoose.model('Consultation', consultationSchema);

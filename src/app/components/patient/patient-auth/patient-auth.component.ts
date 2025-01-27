@@ -116,7 +116,9 @@ export class PatientAuthComponent {
             formData.append('profilePicture', this.selectedFile);
           }
 
-          await this.apiService.patientSignup(formData).toPromise();
+          const response=await this.apiService.patientSignup(formData).toPromise();
+          alert(response.message || response.message || 'success');
+
           this.router.navigate(['/patient/login']);
         } else {
           console.log("response");
@@ -126,7 +128,8 @@ export class PatientAuthComponent {
             password: this.authForm.value.password
           };
           const response = await this.apiService.patientSignin(signinData).toPromise();
-          
+          alert(response.message || response.message || 'success');
+
           // Store token and navigate to dashboard
           localStorage.setItem('token', response.token);
           localStorage.setItem('patientId', response.patientId);

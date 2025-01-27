@@ -125,7 +125,9 @@ export class DoctorAuthComponent {
           next: (response) => {
             localStorage.setItem('token', response.token);
             localStorage.setItem('doctorId', response.doctorId);
-            this.router.navigate(['/doctor/dashboard']);
+            this.router.navigate(['/doctor/login']);
+            alert(response.message || 'Success');
+            this.isSignUp=false
           },
           error: (error) => {
             console.error('Signup error:', error);
