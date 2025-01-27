@@ -37,7 +37,7 @@
 
         <div class="form-group">
           <label for="surgeryTimespan">Surgery Timespan</label>
-          <input 
+          <input style="width: 100%;"
             type="text" 
             id="surgeryTimespan" 
             formControlName="surgeryTimespan" 
@@ -53,13 +53,13 @@
           <label>Diabetic Status</label>
           <div class="radio-group">
             <label>
-              <input 
+              <input style="width: 100%;"
                 type="radio" 
                 formControlName="isDiabetic" 
                 [value]="true"> Diabetic
             </label>
             <label>
-              <input 
+              <input style="width: 100%;"
                 type="radio" 
                 formControlName="isDiabetic" 
                 [value]="false"> Non-Diabetic
@@ -105,7 +105,7 @@
       
             <div class="form-group mt-3">
               <label for="transactionId">Enter Transaction ID*</label>
-              <input 
+              <input style="width: 100%;"
                 type="text" 
                 id="transactionId" 
                 class="form-control"
@@ -128,7 +128,7 @@
             The doctor relies on my description of the problem or scanned reports provided by me. With this understanding, 
             I hereby give my consent for online consultation.
           </small>
-          <div>
+          <div style="display: flex; align-items: center;">
             <input 
               type="checkbox" 
               class="form-check-input" 

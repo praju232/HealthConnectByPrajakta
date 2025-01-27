@@ -79,7 +79,6 @@ label {
 }
 
 input, textarea {
-  width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -87,6 +86,7 @@ input, textarea {
 }
 
 textarea {
+  width: 100%;
   min-height: 100px;
   resize: vertical;
 }
