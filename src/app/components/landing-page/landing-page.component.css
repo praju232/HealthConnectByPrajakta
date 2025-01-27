@@ -1,0 +1,127 @@
+.landing-container {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* ensure the content covers full height*/
+  }
+  header {
+      background-color: #4caf50;
+      color: white;
+      text-align: center;
+      padding: 40px 0;
+  }
+  
+  header .container {
+      max-width: 800px;
+      margin: 0 auto;
+  }
+  header h1{
+      margin-bottom: 10px;
+  }
+  
+  .info {
+      padding: 40px 0;
+  }
+  
+  .info .container {
+      max-width: 800px;
+      margin: 0 auto;
+  }
+  
+  .info h2{
+      margin-bottom: 15px;
+      text-align: center;
+  }
+  
+  .info p{
+      line-height: 1.6; /* added line-height for better reading*/
+      text-align: center;
+  }
+  
+  .signup-options {
+      background-color: #f9f9f9;
+      padding: 40px 0;
+      text-align: center;
+  }
+  .signup-options h2{
+     margin-bottom: 15px;
+  }
+  .signup-options .container{
+      max-width: 500px;
+      margin: 0 auto;
+  }
+  .signup-options p{
+     margin-bottom: 20px;
+  }
+  
+  .signup-options .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+  }
+  
+  .signup-options .buttons button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1em;
+  }
+  
+  .signup-options .buttons .patient-btn {
+      background-color: #28a745;
+      color: white;
+  }
+  
+  .signup-options .buttons .doctor-btn {
+      background-color: #007bff;
+      color: white;
+  }
+  .signup-options .buttons .patient-btn:hover{
+      background-color: #218838;
+  }
+  .signup-options .buttons .doctor-btn:hover{
+      background-color: #0056b3;
+  }
+  footer {
+      background-color: #343a40;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: auto; /* push the footer to the bottom of the page*/
+  }
+  
+  footer .container {
+      max-width: 800px;
+      margin: 0 auto;
+  }
+  /* Responsive Adjustments */
+  @media (max-width: 768px){
+      header {
+          padding: 30px 0;
+      }
+       header .container{
+         max-width: 90%;
+      }
+      .info {
+          padding: 30px 0;
+      }
+      .info .container {
+          max-width: 90%;
+      }
+      .signup-options {
+          padding: 30px 0;
+      }
+      .signup-options .container {
+          max-width: 80%;
+      }
+        .signup-options .buttons{
+          flex-direction: column; /*stack on small screens*/
+      }
+          .signup-options .buttons button{
+            margin-bottom: 10px; /* add margin between buttons*/
+          }
+       footer .container {
+         max-width: 90%;
+      }
+  }

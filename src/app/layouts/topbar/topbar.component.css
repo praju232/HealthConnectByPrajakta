@@ -1,0 +1,77 @@
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2C3E50;
+    padding: 10px 20px;
+    color: white;
+  }
+  
+  .logo h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    margin: 0;
+  }
+  .logo-image {
+    height: 40px;
+    margin-right: 10px;
+  }
+  /* Navigation Links */
+.dashboard-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .dashboard-links a,
+  .dashboard-links button {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dashboard-links button:hover,
+  .dashboard-links a:hover {
+    text-decoration: underline;
+  }
+  .navigation a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+  }
+  
+  .navigation a:hover {
+    color: #1ABC9C;
+  }
+  
+  .logout button {
+    padding: 8px 16px;
+    background-color: #E74C3C;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .logout {
+    display: flex;
+    justify-content: flex-end; /* Positions the button to the right */
+      margin-top: 10px;
+      margin-bottom: 10px;
+      margin-right: 20px;
+  }
+  .logout-btn {
+      background-color: #dc3545; /* Red button */
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+  }
+  .logout-btn:hover {
+    background-color: #c82333; /* Darker red on hover */
+  }
+  

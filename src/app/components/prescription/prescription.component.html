@@ -1,0 +1,69 @@
+<div>
+    <div id="dd" class="prescription-container">
+  <!-- Prescription Content to be converted to PDF -->
+  <div id="prescription-content" >
+    <div class="header">
+      <div class="doctor-info">
+        <p><strong>Dr. {{ doctorName }}</strong></p>
+        <p>Address: Address will go here</p>
+      </div>
+      <div class="date-info">
+        <p><strong>Date:</strong> {{ currentDate | date: 'MMM dd, yyyy' }}</p>
+      </div>
+    </div>
+  </div>
+  <hr class="separator" />
+
+  <!-- Care to be Taken Section -->
+  <form [formGroup]="prescriptionForm" >
+    <div class="care-section">
+      <h4>Care to be Taken</h4>
+      <textarea
+        id="careToBeTaken"
+        formControlName="careToBeTaken"
+        rows="4"
+        placeholder="Enter care instructions..."
+      ></textarea>
+      <div class="error-message" *ngIf="prescriptionForm.get('careToBeTaken')?.touched && prescriptionForm.get('careToBeTaken')?.hasError('required')">
+        Care instructions are required.
+      </div>
+    </div>
+
+    <div class="medicine-section">
+      <h4>Medicine</h4>
+      <textarea
+        id="medicines"
+        formControlName="medicines"
+        rows="4"
+        placeholder="Enter medicine details..."
+      ></textarea>
+    </div>
+<hr class="separator">
+
+<div class="doctor-signature">
+    <p><strong> {{ doctorName }}</strong></p>
+
+</div>
+  </form>
+</div>
+
+<div class="action-buttons prescription-container">
+    <button type="submit" class="btn btn-primary" [disabled]="!prescriptionForm.valid" (click)="onSubmit()">Save Prescription</button>
+    <button type="button" class="btn download-btn" (click)="dd()">Download PDF</button>
+    <button type="button" class="btn send-btn" (click)="onSendEmail()">Send Email</button>
+  <!-- <button type="submit" [disabled]="!prescriptionForm.valid" class="submit-btn">
+    Generate Prescription
+  </button>
+  <button type="button" *ngIf="pdfUrl" (click)="onSendEmail()" [disabled]="isSending" class="send-btn">
+    {{ isSending ? 'Sending...' : 'Send to Patient' }}
+  </button> -->
+</div>
+  <!-- PDF Preview -->
+  <div class="pdf-preview" *ngIf="pdfUrl">
+    <h3>Prescription PDF</h3>
+    <iframe [src]="pdfUrl | safe" width="100%" height="500px"></iframe>
+    <a [href]="pdfUrl" download="prescription.pdf" class="download-btn">
+      Download PDF
+    </a>
+  </div>
+</div>

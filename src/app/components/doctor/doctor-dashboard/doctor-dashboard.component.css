@@ -1,0 +1,82 @@
+.dashboard-container {
+  width: 90%;
+  margin: 20px auto;
+  font-family: sans-serif;
+}
+.welcome-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.welcome-section h1 {
+  margin-bottom: 10px;
+}
+.profile-container {
+width: 100%;
+margin: 20px auto;
+}
+.profile-section {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+.profile-details {
+  display: flex;
+  align-items: center; /* Vertically centers items */
+  gap: 20px; /* Space between image and info */
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.profile-image {
+  width: 150px; /* Adjust size as needed */
+  height: 150px;
+  border-radius: 50%; /* Make image circle */
+  object-fit: cover; /* Preserve aspect ratio */
+  border: 2px solid #ddd; /* Adding a border*/
+}
+
+.profile-info {
+  flex: 1;
+  padding: 10px;
+display: flex;
+flex-direction: column;
+}
+.profile-info p{
+margin-bottom: 10px;
+}
+.edit-profile-btn {
+  background-color: #28a745; /* Green button */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-start; /* aligns the button to the start */
+  margin-top: 10px; /* adds margin */
+}
+.edit-profile-btn:hover {
+background-color: #218838; /* Darker green on hover */
+}
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+ .welcome-section {
+      margin-bottom: 10px;
+  }
+  .profile-details {
+      flex-direction: column; /* Stack on smaller screens */
+       align-items: center; /* Centers items vertically*/
+       text-align: center; /* Centers text on small screens*/
+       gap: 10px;
+  }
+  .profile-info {
+    align-items: center; /* center items vertically*/
+      padding: 0;
+  }
+  .edit-profile-btn{
+      align-self: center;
+  }
+  .profile-image {
+     width: 120px;
+     height: 120px;
+  }
+}

@@ -1,0 +1,78 @@
+<div class="profile-container">
+    <h2>Patient Profile</h2>
+    <form [formGroup]="patientForm" (ngSubmit)="updateProfile()">
+        <div class="form-group profile-pic-container">
+            <input type="image" formControlName="profilePicture" />
+            <img 
+               [src]="getFullImageUrl(patientForm.get('profilePicture')?.value)" 
+               alt="Profile Picture" 
+               class="profile-img"/>
+        </div>
+      <div class="card">
+          <div class="card-header">
+              <h3>Personal Information</h3>
+          </div>
+            <div class="card-body">
+              
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input formControlName="name" class="form-control" id="name"  />
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input formControlName="email" type="email" class="form-control" id="email"/>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone:</label>
+                <input formControlName="phoneNumber" class="form-control" id="phoneNumber" />
+            </div>
+            </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+              <h3>Medical History</h3>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input formControlName="age" type="number" class="form-control" id="age" />
+            </div>
+            <div class="form-group">
+                <label for="surgeryHistory">Surgery History:</label>
+                <input formControlName="surgeryHistory" class="form-control" id="surgeryHistory" />
+            </div>
+            <div class="form-group">
+                <label for="illnessHistory">Illness History:</label>
+                <input formControlName="illnessHistory" class="form-control" id="illnessHistory"/>
+            </div>
+        </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Additional Information</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                  <label for="height">Height:</label>
+                  <input formControlName="height" type="number" class="form-control" id="height"/>
+              </div>
+              <div class="form-group">
+                <label for="weight">Weight:</label>
+                <input formControlName="weight" type="number" class="form-control" id="weight"/>
+            </div>
+            <div class="form-group">
+                <label for="bloodGroup">Blood Group:</label>
+                <input formControlName="bloodGroup" class="form-control" id="bloodGroup" />
+            </div>
+            <div class="form-group">
+                <label for="emergencyContact">Emergency Contact:</label>
+                <input formControlName="emergencyContact" class="form-control" id="emergencyContact" />
+            </div>
+        </div>
+        </div>
+
+        <button type="submit" [disabled]="patientForm.invalid" class="btn-update">Update Profile</button>
+    </form>
+</div>

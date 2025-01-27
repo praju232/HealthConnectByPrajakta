@@ -1,0 +1,54 @@
+<div class="dashboard-container">
+    <div class="stats-grid">
+        <div class="stat-card">
+          <h3>Total Patients</h3>
+          <p class="stat-number">{{ stats.totalPatientsCount }}</p>
+        </div>
+        <div class="stat-card">
+          <h3>Total Appointments</h3>
+          <p class="stat-number">{{ stats.totalAppointments }}</p>
+        </div>
+        <div class="stat-card">
+          <h3>Total Earnings</h3>
+          <p class="stat-number">₹{{ stats.totalEarnings }}</p>
+        </div>
+    </div>
+
+    <div class="appointments-section">
+        <h2>Recent Appointments</h2>
+        <div class="appointments-list" *ngIf="appointments && appointments.length > 0">
+            <div class="appointment-card" *ngFor="let appointment of appointments">
+                <div class="patient-info">
+                    <h3>{{ appointment.patientId?.name || 'No Name' }}</h3>
+                    <p><strong>Date:</strong> {{ appointment.createdAt | date:'medium' }}</p>
+                    <p><strong>Current Illness:</strong> {{ appointment.currentIllness }}</p>
+                    <details>
+                      <summary>Patient Details</summary>
+                        <ul>
+                            <li><strong>Age:</strong> {{ appointment.patientId?.age }}</li>
+                            <li><strong>Phone:</strong> {{ appointment.patientId?.phoneNumber }}</li>
+                            <li><strong>Email:</strong> {{ appointment.patientId?.email }}</li>
+                         </ul>
+                     </details>
+                    <details>
+                      <summary>Medical History</summary>
+                    <ul>
+                          <li><strong>Allergies:</strong> {{ appointment.allergies }}</li>
+                          <li><strong>Recent Surgery:</strong> {{ appointment.recentSurgery }}</li>
+                           <li><strong>Other Conditions:</strong> {{ appointment.otherConditions }}</li>
+                     </ul>
+                    </details>
+                </div>
+                <div class="appointment-status" [ngClass]="appointment.status.toLowerCase()">
+                  Status: {{ appointment.status }}
+                </div> 
+                 <button class="prescription-btn" (click)="navigateToPrescription(appointment._id)">
+                      Write Prescription
+                  </button>
+            </div>
+        </div>
+        <div class="no-appointments" *ngIf="!appointments || appointments.length === 0">
+          No appointments found
+        </div>
+    </div>
+</div>

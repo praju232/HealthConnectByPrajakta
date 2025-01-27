@@ -1,0 +1,31 @@
+<div class="doctor-list-container">
+  <h2>Available Doctors</h2>
+
+  <div *ngIf="loading" class="loading">
+    Loading doctors...
+  </div>
+
+  <div *ngIf="error" class="error">
+    {{ error }}
+  </div>
+
+  <div class="doctor-grid">
+    <div *ngFor="let doctor of doctors" class="doctor-card">
+      <div class="doctor-image">
+        <img [src]="doctor.profilePicture" [alt]="doctor.name">
+      </div>
+      <div class="doctor-info">
+        <h3>{{ doctor.name }}</h3>
+        <p class="specialty">{{ doctor.specialty }}</p>
+        <p class="experience">{{ doctor.yearsOfExperience }} years of experience</p>
+        <button class="consult-btn" (click)="onConsult(doctor._id)">
+          Consult Now
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && !error && doctors.length === 0" class="no-doctors">
+    No doctors available at the moment.
+  </div>
+</div>

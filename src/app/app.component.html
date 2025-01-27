@@ -1,5 +1,4 @@
-<!-- app.component.html -->
-<div class="container">
+<!-- <div class="container">
   <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="username">Username</label>
@@ -20,25 +19,18 @@
     <div class="form-group">
       <label for="password">Password</label>
       <input id="password" type="password" class="form-control" formControlName="password">
-      <!-- <div *ngIf="userForm.get('password').invalid && userForm.get('password').touched" class="text-danger">
-        <span *ngIf="userForm.get('password').errors?.required">Password is required.</span>
-        <span *ngIf="userForm.get('password').errors?.minlength">Password must be at least 6 characters long.</span>
-      </div> -->
+      <div *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched" class="text-danger">
+        Password is required.
+      </div>
     </div>
 
     <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Submit</button>
-  </form><br>
-  <div class="card">
-    <table>
-      <tr>
-        <td>user</td>
-        <td>username</td>
-      </tr>
-      <tr>
-        <td>{{data.user}}</td>
-        <td>{{data.username}}</td>
-      </tr>
-    </table>
-  </div>
-</div>
+  </form>
+</div> -->
+
+<app-topbar *ngIf="showTopbar"></app-topbar>
+
+
+
+<router-outlet></router-outlet>
 

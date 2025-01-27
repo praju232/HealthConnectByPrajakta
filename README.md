@@ -1,6 +1,48 @@
 # ExpressAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
+## Project Overview
+This project is designed to provide a comprehensive solution for managing prescriptions. It includes features for doctors and patients to interact seamlessly.
+
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Express-angular
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+## Routes
+- **GET /api/prescriptions**: Retrieve all prescriptions.
+- **POST /api/prescriptions**: Create a new prescription.
+- **GET /api/prescriptions/:id**: Retrieve a prescription by ID.
+- **PUT /api/prescriptions/:id**: Update a prescription by ID.
+- **DELETE /api/prescriptions/:id**: Delete a prescription by ID.
+
+## Technologies Used
+- Node.js
+- Express
+- Angular
+- MongoDB
+
+## Features
+- User authentication for doctors and patients.
+- Prescription management.
+- Responsive design for mobile and desktop.
+
+## Usage
+Instructions on how to use the project after installation.
+
+## Contributing
+Guidelines for contributing to the project.
+
+## License
+Information about the project's license.
 
 ## Development server
 

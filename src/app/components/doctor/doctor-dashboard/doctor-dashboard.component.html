@@ -1,0 +1,24 @@
+<div class="dashboard-container">
+  <div class="welcome-section" *ngIf="doctorProfile">
+    <h1>Welcome, Dr. {{ doctorProfile.name }}</h1>
+    <p>{{ doctorProfile.specialty }} | {{ doctorProfile.yearsOfExperience }} years of experience</p>
+  </div>
+  <div class="profile-container">
+    <!-- <h2>Doctor Profile</h2> -->
+    <div class="profile-section" *ngIf="doctorProfile">
+        <div class="profile-details"> <!-- Wrap both img & info -->
+            <img [src]="doctorProfile.profilePicture || 'assets/default-doctor.png'" 
+               alt="Doctor's profile picture" 
+               class="profile-image"
+              >
+            <div class="profile-info">
+                <p><strong>Speciality:</strong> {{ doctorProfile.specialty }}</p>
+                <p><strong>Years Of Experience:</strong> {{ doctorProfile.yearsOfExperience }}</p>
+                <p><strong>Contact:</strong> {{ doctorProfile.phoneNumber }}</p>
+                <p><strong>Email:</strong> {{ doctorProfile.email }}</p>
+                 <button class="edit-profile-btn" (click)="navigateToEditProfile()">Edit Profile</button>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

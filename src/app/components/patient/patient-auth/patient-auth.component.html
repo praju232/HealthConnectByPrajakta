@@ -1,0 +1,127 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>{{ isSignUp ? 'Patient Sign Up' : 'Patient Sign In' }}</h2>
+    
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+          type="email" 
+          id="email" 
+          formControlName="email" 
+          placeholder="Enter your email"
+        >
+        <div class="error-message" *ngIf="authForm.get('email')?.touched && authForm.get('email')?.errors">
+          <span *ngIf="authForm.get('email')?.errors?.['required']">Email is required</span>
+          <span *ngIf="authForm.get('email')?.errors?.['email']">Please enter a valid email</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+          type="password" 
+          id="password" 
+          formControlName="password" 
+          placeholder="Enter your password"
+        >
+        <div class="error-message" *ngIf="authForm.get('password')?.touched && authForm.get('password')?.errors">
+          <span *ngIf="authForm.get('password')?.errors?.['required']">Password is required</span>
+          <span *ngIf="authForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</span>
+        </div>
+      </div>
+
+      <div class="form-group" *ngIf="isSignUp">
+        <label for="name">Full Name</label>
+        <input 
+          type="text" 
+          id="name" 
+          formControlName="name" 
+          placeholder="Enter your full name"
+        >
+        <div class="error-message" *ngIf="authForm.get('name')?.touched && authForm.get('name')?.errors?.['required']">
+          Full name is required
+        </div>
+      </div>
+
+      <div class="form-group" *ngIf="isSignUp">
+        <label>Profile Picture</label>
+        <div class="file-input-container">
+          <label class="file-input-label">
+            <input 
+              type="file" 
+              (change)="onFileSelected($event)" 
+              accept="image/*" 
+              style="display: none;"
+            >
+            Choose File
+          </label>
+          <div class="selected-file" *ngIf="selectedFile">
+            Selected: {{ selectedFile.name }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" *ngIf="isSignUp">
+        <label for="age">Age</label>
+        <input 
+          type="number" 
+          id="age" 
+          formControlName="age" 
+          placeholder="Enter your age"
+        >
+        <div class="error-message" *ngIf="authForm.get('age')?.touched && authForm.get('age')?.errors?.['required']">
+          Age is required
+        </div>
+      </div>
+
+      <div class="form-group" *ngIf="isSignUp">
+        <label for="phoneNumber">Phone Number</label>
+        <input 
+          type="tel" 
+          id="phoneNumber" 
+          formControlName="phoneNumber" 
+          placeholder="Enter your phone number"
+        >
+        <div class="error-message" *ngIf="authForm.get('phoneNumber')?.touched && authForm.get('phoneNumber')?.errors?.['required']">
+          Phone number is required
+        </div>
+      </div>
+
+      <div class="form-group" *ngIf="isSignUp">
+        <label for="surgeryHistory">Surgery History</label>
+        <textarea 
+          id="surgeryHistory" 
+          formControlName="surgeryHistory" 
+          placeholder="Enter your surgery history (if any)"
+        ></textarea>
+        <div class="error-message" *ngIf="authForm.get('surgeryHistory')?.touched && authForm.get('surgeryHistory')?.errors?.['required']">
+          Surgery history is required
+        </div>
+      </div>
+
+      <div class="form-group" *ngIf="isSignUp">
+        <label for="illnessHistory">Illness History</label>
+        <textarea 
+          id="illnessHistory" 
+          formControlName="illnessHistory" 
+          placeholder="Enter your illness history (separate by commas)"
+        ></textarea>
+        <div class="error-message" *ngIf="authForm.get('illnessHistory')?.touched && authForm.get('illnessHistory')?.errors?.['required']">
+          Illness history is required
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="authForm.invalid">
+        {{ isSignUp ? 'Sign Up' : 'Sign In' }}
+      </button>
+    </form>
+
+    <p class="toggle-text">
+      {{ isSignUp ? 'Already have an account?' : 'Don\'t have an account?' }}
+      <a href="javascript:void(0)" (click)="toggleForm()">
+        {{ isSignUp ? 'Sign In' : 'Sign Up' }}
+      </a>
+    </p>
+  </div>
+</div>

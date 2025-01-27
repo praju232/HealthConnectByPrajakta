@@ -1,0 +1,143 @@
+.dashboard-container {
+    width: 90%;
+    margin: 20px auto;
+    font-family: sans-serif;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card h3 {
+    margin-bottom: 10px;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.appointments-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.appointments-section h2 {
+    margin-bottom: 20px;
+}
+
+.appointments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* space between appointment cards */
+}
+
+.appointment-card {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap; /* allows for responsiveness*/
+    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.patient-info{
+    flex: 1;
+}
+.appointment-card h3 {
+    margin-bottom: 10px;
+}
+
+.appointment-card p {
+    margin-bottom: 5px;
+}
+details {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+}
+details[open] {
+  padding-bottom: 15px;
+}
+summary {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 8px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+details ul{
+  margin-top: 5px;
+  margin-left: 20px;
+}
+
+.appointment-status {
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    white-space: nowrap; /* prevent wrapping*/
+    text-align: center;
+}
+.appointment-status.pending {
+  background-color: #ffc107;
+    color: #000;
+}
+.appointment-status.completed{
+   background-color: #28a745;
+   color: #fff;
+}
+.appointment-status.cancelled {
+   background-color: #dc3545;
+    color: #fff;
+}
+.prescription-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.no-appointments {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    color: #666;
+}
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .dashboard-container {
+        width: 95%;
+    }
+    .stats-grid{
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust card width */
+        gap: 10px; /* Reduce space between cards*/
+    }
+      .stat-card {
+          padding: 10px; /* reduce padding*/
+      }
+      .stat-number {
+         font-size: 1.5rem; 
+    }
+    .appointment-card{
+         flex-direction: column; /* stack on small screens*/
+    }
+}

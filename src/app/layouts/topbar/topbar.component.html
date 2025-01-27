@@ -1,0 +1,18 @@
+<div class="topbar">
+ 
+    <div class="logo">
+        <!-- <img src="assets/logo.png" alt="Doctor-Patient Logo" class="logo-image" /> -->
+      <h1>HealthConnect</h1> 
+    </div>
+    <div class="navigation">
+      <a *ngIf="isDoctor" (click)="navigateToProfile()">Profile</a>
+      <a *ngIf="isPatient" [routerLink]="'/patient/dashboard/'">Doctor List</a>
+      <a *ngIf="isDoctor" (click)="appointment()">Appointments</a>
+      <a *ngIf="isPatient" (click)="navigateToProfile()">Profile</a>
+    </div>
+
+    <div class="logout">
+        <button class="logout-btn" (click)="logout()">Logout</button>
+      </div>
+  </div>
+  

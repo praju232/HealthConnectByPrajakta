@@ -1,0 +1,190 @@
+<div class="consultation-container">
+  <div class="consultation-card">
+    <div class="doctor-info" *ngIf="doctor">
+      <img [src]="doctor.profilePicture" [alt]="doctor.name" class="doctor-image">
+      <h3>{{ doctor.name }}</h3>
+      <p>{{ doctor.specialty }}</p>
+    </div>
+
+    <div class="stepper">
+      <div class="step" [class.active]="currentStep === 1">1</div>
+      <div class="line"></div>
+      <div class="step" [class.active]="currentStep === 2">2</div>
+      <div class="line"></div>
+      <div class="step" [class.active]="currentStep === 3">3</div>
+    </div>
+
+    <form [formGroup]="consultationForm" (ngSubmit)="onSubmit()">
+      <!-- Step 1: Current Illness and Surgery History -->
+      <div class="step-content" *ngIf="currentStep === 1">
+        <h3>Current Illness & Surgery History</h3>
+        
+        <div class="form-group">
+          <label for="currentIllness">Current Illness History</label>
+          <textarea 
+            id="currentIllness" 
+            formControlName="currentIllness" 
+            placeholder="Describe your current illness"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="recentSurgery">Recent Surgery</label>
+          <textarea 
+            id="recentSurgery" 
+            formControlName="recentSurgery" 
+            placeholder="Describe any recent surgeries"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="surgeryTimespan">Surgery Timespan</label>
+          <input 
+            type="text" 
+            id="surgeryTimespan" 
+            formControlName="surgeryTimespan" 
+            placeholder="When was the surgery performed?">
+        </div>
+      </div>
+
+      <!-- Step 2: Family Medical History -->
+      <div class="step-content" *ngIf="currentStep === 2">
+        <h3>Family Medical History</h3>
+        
+        <div class="form-group">
+          <label>Diabetic Status</label>
+          <div class="radio-group">
+            <label>
+              <input 
+                type="radio" 
+                formControlName="isDiabetic" 
+                [value]="true"> Diabetic
+            </label>
+            <label>
+              <input 
+                type="radio" 
+                formControlName="isDiabetic" 
+                [value]="false"> Non-Diabetic
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="allergies">Allergies</label>
+          <textarea 
+            id="allergies" 
+            formControlName="allergies" 
+            placeholder="List any allergies"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="otherConditions">Other Conditions</label>
+          <textarea 
+            id="otherConditions" 
+            formControlName="otherConditions" 
+            placeholder="List any other medical conditions"></textarea>
+        </div>
+      </div>
+
+      <!-- Step 3: Payment -->
+      <div class="step-content" *ngIf="currentStep === 3">
+        <h3 class="text-center">Payment Information</h3>
+        
+        <!-- Payment Section -->
+        <div class="payment-section">
+          <!-- QR Code -->
+          <div class="qr-code-container">
+            <img [src]="qrCodeUrl" alt="Payment QR Code" />
+            <p>Scan and Pay using UPI App</p>
+            <p><strong>UPI ID: </strong> {{ doctor?.upiId }}</p>
+          </div>
+      
+          <!-- Amount and Transaction ID -->
+          <div class="payment-details">
+            <p><strong>Pay Using Any App</strong></p>
+            <h4>₹ {{ doctor?.consultationFee }}</h4>
+            <small>(After Payment)</small>
+      
+            <div class="form-group mt-3">
+              <label for="transactionId">Enter Transaction ID*</label>
+              <input 
+                type="text" 
+                id="transactionId" 
+                class="form-control"
+                formControlName="transactionId" 
+                placeholder="Enter transaction ID">
+              <div *ngIf="consultationForm.get('transactionId')?.invalid && consultationForm.get('transactionId')?.touched" class="text-danger">
+                Transaction ID is required.
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Consent Section -->
+        <div class="consent-section mt-4">
+          <p>
+            <strong>Consent for Online Consultation</strong>
+          </p>
+          <small>
+            I have understood that this is an online consultation without a physical checkup of my symptoms. 
+            The doctor relies on my description of the problem or scanned reports provided by me. With this understanding, 
+            I hereby give my consent for online consultation.
+          </small>
+          <div class="form-check mt-3">
+            <input 
+              type="checkbox" 
+              class="form-check-input" 
+              id="consentCheckbox" 
+              formControlName="consent">
+            <label for="consentCheckbox">Yes, I Accept</label>
+          </div>
+          <div *ngIf="consultationForm.get('consent')?.invalid && consultationForm.get('consent')?.touched" class="text-danger">
+            You must accept the consent to proceed.
+          </div>
+        </div>
+        </div>
+      
+      <!-- <div class="step-content" *ngIf="currentStep === 3">
+        <h3>Payment Information</h3>
+        
+        <div class="qr-code">
+          <img [src]="qrCodeUrl" alt="Payment QR Code">
+          <p>Scan QR code to make payment</p>
+        </div>
+
+        <div class="form-group">
+          <label for="transactionId">Transaction ID</label>
+          <input 
+            type="text" 
+            id="transactionId" 
+            formControlName="transactionId" 
+            placeholder="Enter transaction ID">
+        </div>
+      </div> -->
+
+      <div class="button-group">
+        <button 
+          type="button" 
+          *ngIf="currentStep > 1" 
+          (click)="previousStep()"
+          class="secondary-btn">
+          Previous
+        </button>
+        
+        <button 
+          type="button" 
+          *ngIf="currentStep < 3" 
+          (click)="nextStep()"
+          class="primary-btn">
+          Next
+        </button>
+
+        <button 
+          type="submit" 
+          *ngIf="currentStep === 3"
+          [disabled]="!consultationForm.valid"
+          class="primary-btn">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
